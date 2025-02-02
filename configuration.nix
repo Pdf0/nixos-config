@@ -88,8 +88,9 @@
     wget
     brave
     spotify
-    discord
+    vesktop
     alsa-utils
+    findutils
     terminator
     vscode
     polkit
@@ -106,6 +107,14 @@
         bbenoist.nix
         ms-python.python
       ];
+    })
+
+    (symlinkJoin {
+      name = "discord";
+      paths = [ vesktop ];
+      postBuild = ''
+        ln -s $out/bin/vesktop $out/bin/discord
+      '';
     })
   ];
 
