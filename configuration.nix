@@ -12,6 +12,7 @@
       ./programs/zsh.nix
       ./services/nvidia.nix
       ./services/git.nix
+      ./cybersecurity/pkgs.nix
     ];
 
   # Bootloader.
@@ -86,6 +87,9 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
+    openvpn
+    p7zip
+    bat
     brave
     spotify
     vesktop
@@ -101,6 +105,7 @@
     git
     tldr
     vlc
+    pulseaudio
 
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions; [
