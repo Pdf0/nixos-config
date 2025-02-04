@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ./users/pdf.nix
       ./programs/zsh.nix
+      ./programs/garbage.nix 
       ./services/nvidia.nix
       ./services/git.nix
       ./cybersecurity/pkgs.nix
