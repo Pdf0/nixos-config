@@ -128,6 +128,7 @@
     okular
     gnome-calculator
     zoxide
+    feh
 
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions; [

@@ -193,3 +193,5 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 exec_always --no-startup-id $HOME/nixos-config/dotfiles/polybar/launch.sh
+
+exec_always --no-startup-id feh --bg-scale $HOME/nixos-config/images/background-image
