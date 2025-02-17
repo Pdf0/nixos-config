@@ -15,7 +15,7 @@
 
     mesa-demos
     (writeShellScriptBin "nvidia-offload" ''
-      exec /etc/nixos/scripts/nvidia-offload "$@"
+      exec ./scripts/nvidia-offload "$@"
     '')
   ];
 
