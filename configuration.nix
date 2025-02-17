@@ -8,9 +8,9 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./cachix.nix
       ./users/pdf.nix
       ./programs/zsh.nix
-      ./programs/garbage.nix 
       ./services/nvidia.nix
       ./services/git.nix
       ./cybersecurity/pkgs.nix
@@ -101,12 +101,33 @@
     polkit
     polkit_gnome
     python311
+    python311Packages.pip
+    python311Packages.dbus-python
     flameshot
     lshw
     git
     tldr
     vlc
     pulseaudio
+    cachix
+    libreoffice
+    brightnessctl
+    obsidian
+    qemu
+    maven
+    sumo
+    nix-index
+    openjdk
+    polybar
+    font-awesome
+    rofi
+    bluez
+    gpick
+    alacritty
+    xfce.thunar
+    okular
+    gnome-calculator
+    zoxide
 
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions; [
@@ -120,6 +141,14 @@
       paths = [ vesktop ];
       postBuild = ''
         ln -s $out/bin/vesktop $out/bin/discord
+      '';
+    })
+
+    (symlinkJoin {
+      name = "calculator";
+      paths = [ gnome-calculator ];
+      postBuild = ''
+        ln -s $out/bin/gnome-calculator $out/bin/calculator
       '';
     })
   ];
@@ -167,6 +196,7 @@
 	  displayManager.defaultSession = "none+i3";
     windowManager.i3 = {
 		  enable = true;
+      configFile = ./dotfiles/i3/config;
 		  extraPackages = with pkgs; [
 			  dmenu
 			  i3status
@@ -181,5 +211,43 @@
   fonts.packages = with pkgs; [
 	  fira-code
 	  nerdfonts
+    font-awesome
   ];
+
+  fonts.fontconfig = {
+    defaultFonts = {
+      emoji = [ "font-awesome" ];
+    };
+  };
+
+  # Dynamically Linked Executables
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    # Add any missing dynamic libraries for unpackaged programs
+    # here, NOT in environment.systemPackages
+  ];
+
+  # Virtualization
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = true;
+      swtpm.enable = true;
+      ovmf = {
+        enable = true;
+        packages = [(pkgs.OVMF.override {
+          secureBoot = true;
+          tpmSupport = true;
+        }).fd];
+      };
+    };
+  };
+  programs.virt-manager.enable = true;
+  users.groups.libvirtd.members = ["pdf"];
+  virtualisation.spiceUSBRedirection.enable = true;
+
+  # Docker
+  virtualisation.docker.enable = true;
+
 }
