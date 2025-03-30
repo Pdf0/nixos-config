@@ -15,7 +15,7 @@ Relevant programs/services used:
 - [ ] Add home manager
 - [ ] Improve structure
 
-## Installation
+## Installation (Don't follow this steps as they are not the correct way to do this (yet))
 
 1. Clone the repository to your $HOME directory
 2. `sudo ln $HOME/nixos-config/configuration.nix /etc/nixos/configuration.nix`
