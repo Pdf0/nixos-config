@@ -11,7 +11,7 @@ Relevant programs/services used:
 
 ### To-Do
 - [X] Add i3 config
-- [ ] Add alacritty config
+- [X] Add alacritty config
 - [ ] Add home manager
 - [ ] Improve structure
 
