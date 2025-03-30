@@ -27,13 +27,26 @@
       glog="git log --oneline --decorate --graph";
       gsw="git switch";
 
-      currDate="date +%Y-%m-%d";
+      c="clear";
+      ne="code ~/nixos-config";
+      clean-gens="sudo nix-env -p /nix/var/nix/profiles/system --delete-generations old";
     };
     
     ohMyZsh = {
      	enable = true;
      	plugins = [ "git" ];
      	theme = "robbyrussell";
+    };
+  };
+
+  system.userActivationScripts = {
+   extraUserActivation = {
+       text = ''
+        ln -sfn $HOME/nixos-config/dotfiles/alacritty ~/.config/
+        ln -sfn $HOME/nixos-config/dotfiles/i3 ~/.config/
+        ln -sfn $HOME/nixos-config/dotfiles/polybar ~/.config/
+      '';
+      deps = [];
     };
   };
 }

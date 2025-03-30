@@ -1,0 +1,16 @@
+[scrolling]
+history = 5000
+
+[window]
+dynamic_padding = false
+opacity = 1
+title = "Alacritty"
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"
+
+[window.padding]
+x = 10
+y = 10
+

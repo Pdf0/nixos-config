@@ -9,19 +9,23 @@
         # Forensics
         gef
         stegseek
+        steghide
+        stegsolve
+        zsteg
         sleuthkit
+        exif
+        exiftool
 
         # Fuzzers
         ffuf
         gobuster
         wfuzz
-        zzuf
         dirbuster
 
         # Bin
         ghidra-bin
         gdb
-        python3Packages.binwalk
+        binwalk
 
         # Network
         netcat-gnu
@@ -33,6 +37,7 @@
         hashcat
         hashcat-utils
         john
+        thc-hydra
 
         # Port Scanners
         nmap
@@ -63,6 +68,9 @@
         # Wireless
         aircrack-ng
         netscanner
+
+        # SQL
+        sqlmap
 
         # Misc
         libressl

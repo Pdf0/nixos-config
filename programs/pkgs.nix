@@ -17,13 +17,12 @@
         vesktop
         alsa-utils
         findutils
-        terminator
         vscode
         polkit
         polkit_gnome
-        python311
-        python311Packages.pip
-        python311Packages.dbus-python
+        python3Full
+        python312Packages.pip
+        python312Packages.conda
         flameshot
         lshw
         git
@@ -46,10 +45,36 @@
         gpick
         alacritty
         xfce.thunar
-        okular
+        kdePackages.okular
         gnome-calculator
         zoxide
         feh
+        upower
+        bluez
+        pamixer
+        file
+        sage
+        conda
+        cloudflare-warp
+        openvpn
+        mgba
+        libcap
+        go
+        gcc
+        gnupg
+        thunderbird
+        pinentry    
+        dunst
+        arandr
+        pavucontrol
+        inetutils
+        nfs-utils
+        mysql84
+        sqlite
+        prismlauncher
+        rustup
+        jekyll
+        dig
 
         (vscode-with-extensions.override {
         vscodeExtensions = with vscode-extensions; [
@@ -74,4 +99,13 @@
         '';
         })
     ];
+
+    programs.nix-ld.enable = true;
+
+    programs.neovim = {
+        enable = true;
+        defaultEditor = true;
+        viAlias = true;
+        vimAlias = true;
+    };
 }

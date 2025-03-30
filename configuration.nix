@@ -32,6 +32,11 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Add extra hosts here
+  networking.extraHosts =
+  ''
+  '';
+
   # Set your time zone.
   time.timeZone = "Europe/Lisbon";
 
@@ -148,5 +153,16 @@
       emoji = [ "font-awesome" ];
     };
   };
+
+  # Bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+  services.blueman = {
+    enable = true;  };
+
+  # Printing
+  services.printing.enable = true;
 
 }
