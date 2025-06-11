@@ -38,6 +38,7 @@
         hashcat-utils
         john
         thc-hydra
+        ncrack
 
         # Port Scanners
         nmap

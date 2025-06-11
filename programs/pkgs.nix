@@ -1,6 +1,7 @@
-{ config, pkgs, ...}:
-
-{
+{ config, pkgs, ... }:
+let
+   unstable = import <nixos-unstable> {};
+in {
     # Allow unfree packages
     nixpkgs.config.allowUnfree = true;
 
@@ -33,9 +34,7 @@
         libreoffice
         brightnessctl
         obsidian
-        qemu
-        maven
-        sumo
+        unstable.qemu
         nix-index
         openjdk
         polybar
@@ -53,7 +52,6 @@
         bluez
         pamixer
         file
-        sage
         conda
         cloudflare-warp
         openvpn
@@ -61,9 +59,6 @@
         libcap
         go
         gcc
-        gnupg
-        thunderbird
-        pinentry    
         dunst
         arandr
         pavucontrol
@@ -73,15 +68,36 @@
         sqlite
         prismlauncher
         rustup
-        jekyll
         dig
+        tree
+        protonvpn-cli_2
+        megapixels
+        
+        # nvim
+        luarocks
+        ripgrep
+        fd
+        fzf
+        lua
 
-        (vscode-with-extensions.override {
-        vscodeExtensions = with vscode-extensions; [
-            bbenoist.nix
-            ms-python.python
-        ];
-        })
+        zlib
+        libguestfs-with-appliance
+        rofi
+        ncdu
+        signal-desktop
+        nodejs_23
+        acpi
+        openresolv
+        qbittorrent-enhanced
+        vlc
+        elixir_1_18
+        jetbrains.datagrip
+        erlang_27
+        gnumake
+        direnv
+        unstable.bruno
+        python312Packages.textual-dev
+        xclip
 
         (symlinkJoin {
         name = "discord";
@@ -108,4 +124,8 @@
         viAlias = true;
         vimAlias = true;
     };
+
+    virtualisation.virtualbox.host.enable = true;
+    users.extraGroups.vboxusers.members = [ "pdf" ];
+
 }

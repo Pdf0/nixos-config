@@ -124,10 +124,10 @@
 	};
   # i3 config
   environment.pathsToLink = [ "/libexec" ];
+  services.displayManager.defaultSession = "none+i3";
   services.xserver = {
 	  enable = true;
 	  desktopManager.xterm.enable = true;
-	  displayManager.defaultSession = "none+i3";
     windowManager.i3 = {
 		  enable = true;
       configFile = ./dotfiles/i3/config;
@@ -164,5 +164,8 @@
 
   # Printing
   services.printing.enable = true;
+
+  # Picom
+  services.picom.enable = true;
 
 }
